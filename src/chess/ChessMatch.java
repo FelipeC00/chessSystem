@@ -1,6 +1,9 @@
 package chess;
 
+import chess.pieces.King;
+import chess.pieces.Rook;
 import gameboard.Board;
+import gameboard.Position;
 
 public class ChessMatch {
     private Board board;
@@ -10,6 +13,7 @@ public class ChessMatch {
 
     public ChessMatch(Board board) {
         this.board = board;
+        intialSetup();
     }
     public ChessPiece[][] getPieces(){
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
@@ -19,6 +23,11 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+    private void intialSetup(){
+        board.placePiece(new Rook(board, Color.WHITE), new Position(2,1));
+        board.placePiece(new King(board, Color.BLACK), new Position(0,4));
+        board.placePiece(new King(board, Color.WHITE), new Position(7,4));
     }
 
 
